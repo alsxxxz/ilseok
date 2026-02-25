@@ -21,7 +21,7 @@
 }
 
 /* 리뷰/문의 게시물 없을 때 플랫폼이 자동 출력하는 "게시물이 없습니다" 숨김 */
-#prdReview .noList,
-#prdQnA .noList {
+#prdReview p.noList,
+#prdQnA p.noList {
     display: none !important;
 }
