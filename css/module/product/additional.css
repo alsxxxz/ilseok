@@ -20,6 +20,13 @@
     box-sizing: border-box;
 }
 
+/* 모바일/태블릿: 스와이프 갤러리(Product_mobileImage, $swipe=yes)가 이미지를 담당하므로
+   정적 폴백 이미지(<p class="prdImg" id="prdDetailImg">)를 숨겨
+   같은 이미지가 두 번 표시되는 문제와 미스타일 블루 앵커 깨짐을 동시에 수정 */
+.RTMB p.prdImg {
+    display: none;
+}
+
 /* 리뷰/문의 게시물 없을 때 플랫폼이 자동 출력하는 "게시물이 없습니다" 숨김 */
 #prdReview p.nodata,
 #prdQnA p.nodata {
