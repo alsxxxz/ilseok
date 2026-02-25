@@ -1,4 +1,10 @@
 <!--@layout(/layout/basic/layout.html)-->
+
+<!-- ========================================================
+     [PAGE: 상품 상세 페이지]  product/detail.html
+     ======================================================== -->
+
+<!-- ① 브레드크럼 — 상단 카테고리 경로 (홈 > 카테고리1 > ... > 현재상품) -->
 <div class="section path" module="product_headcategory" data-ez-module="product-head-breadcrumb/1" data-ez="contents-07auf2u-1">
     <span>현재 위치</span>
     <ol>
@@ -9,9 +15,12 @@
         <li class="{$disp_cate_4|display}"><strong><a href="{$link_product_list_4}">{$name_4}</a></strong></li>
     </ol>
 </div>
+<!-- ② 페이지 타이틀 — "상품상세 정보" 문구 (모바일/태블릿에서만 표시) -->
 <div class="titleArea display_tablet_only" data-ez-module="product-detail-head-title-mobile/1" data-ez="contents-0ci3797-1">
     <h2>상품상세 정보</h2>
 </div>
+
+<!-- ③ 상품 상세 메인 영역 시작 (product_detail module) -->
 <div class="section" module="product_detail" data-ez="contents-0ons9tb-1">
     <!--@css(/css/module/product/detail.css)-->
     <!--@js(/js/module/product/detail.js)-->
@@ -19,6 +28,7 @@
 		$coupon_download_page = /coupon/coupon_productdetail.html
     -->
      <div class="detailArea">
+        <!-- ③-A 상품 이미지 영역 — 메인 이미지 + 썸네일 리스트 (PC) / 스와이프 갤러리 (모바일) -->
         <div class="imgArea" module="product_image">
             <!--@js(/js/module/product/product_image.js)-->
             <div class="RW">
@@ -63,7 +73,9 @@
                 </div>
             </div>
         </div>
+        <!-- ③-B 상품 정보/구매 영역 시작 (우측 패널) -->
         <div class="infoArea" data-ez-role="ez-discount-tag">
+            <!-- 상품명 + 아이콘 뱃지 -->
             <div class="headingArea">
 				<div class="icon">{$soldout_icon} {$stock_icon} {$recommend_icon} {$new_icon} {$product_icons} {$today_arrival_icon} {$pickup_icon} {$benefit_icons} {$regular_delivery_icon} {$cultural_tax_icon}</div>
                 <h1>{$name}</h1>
@@ -73,6 +85,7 @@
                 <span>{$supply_top_logo}</span>
                 <a href="#none" onclick="{$supply_go_action}"><img src="{$supply_go_img}" alt="공급사 바로가기" loading="lazy" ez-prevent="img"></a>
             </div>
+            <!-- 상품 기본 정보 테이블 (판매가·원산지·제조사 등 관리자 설정 항목) -->
             <div module="product_detaildesign">
                 <!--
                     출력 갯수 지정 변수, 없으면 설정된 전체가 나옵니다.
@@ -92,6 +105,7 @@
                     </tbody>
                 </table>
             </div>
+            <!-- 렌탈 서비스 요금표 (렌탈 상품에만 표시) -->
             <!--- 렌탈서비스 -->
             <table border="1" summary class="{$rental_information_display|display}">
                 <tbody>
@@ -107,6 +121,7 @@
                 </tr>
                 </tbody>
             </table>
+            <!-- 정기배송 옵션 (정기배송 설정 상품에만 표시) -->
             <div class="regularDelivery {$regular_delivery_display|display}">
                 <table border="1" summary="정기결제">
                     <caption>정기결제</caption>
@@ -151,6 +166,7 @@
                 </table>
             </div>
             <p class="{$naver_mileage_exception_display|display}"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/product/txt_naver.gif" alt="개인결제창을 통한 결제 시 네이버 마일리지 적립 및 사용이 가능합니다." loading="lazy" ez-prevent="img"></p>
+            <!-- 옵션 선택 + 수량 입력 테이블 -->
             <table border="1" module="product_option">
                 <!--
                 $use_per_add_option = yes
@@ -210,6 +226,7 @@
                 <p class="info {$limit_display|display}">(최소주문수량 {$minimum_limit}개 이상<span class="{$maximum_limit_display|display}"> / 최대주문수량 {$maximum_limit}개 이하</span>)</p>
                 <span class="sizeGuide {$size_guide_display|display}"><a href="#none" class="{$size_guide_class}" product_no="{$product_no}">사이즈 가이드 <i aria-hidden="true" class="icon icoArrowRight"></i></a></span>
             </div>
+            <!-- 세트상품 구성 (세트 상품에만 표시) -->
             <div class="productSet" module="product_setproduct">
                 <!--
                     $use_per_add_option = yes
@@ -350,6 +367,7 @@
                     </dd>
                 </dl>
             </div>
+            <!-- 추가구성상품 (함께 구매 가능한 옵션 상품) -->
             <div class="productSet additional" module="product_addproduct">
                 <!--
                 $use_per_add_option = yes
@@ -457,6 +475,7 @@
                     </li>
                 </ul>
             </div>
+            <!-- 선택 옵션 합산 테이블 (옵션 선택 후 펼쳐지는 목록) -->
             <div id="{$total.total_id}" class="{$total.total_display|display}">
                 <table border="1">
                     <caption>상품 목록</caption>
@@ -544,11 +563,13 @@
                     <!-- // 옵션선택 또는 세트상품 선택시 상품이 추가되는 영역입니다. 쇼핑몰 화면에는 아래와 같은 마크업구조로 표시됩니다. 삭제시 기능이 정상동작 하지 않습니다. -->
                 </table>
             </div>
+            <!-- 총 결제금액 표시 (TOTAL 숫자) -->
             <div id="{$total.total_price_id}" class="totalPrice">
                 <p class="ec-base-help txtWarn txt11 {$exclusive_purchase_olny|display}"> 단독구매상품</p>
                 <strong class="title">TOTAL <span class="qty">(QUANTITY)</span></strong><span class="{$total.total_cnt}"><strong><em>0</em></strong> (0개)</span>
             </div>
             <p class="ec-base-help {$price_warning_class}">할인가가 적용된 최종 결제예정금액은 주문 시 확인할 수 있습니다.</p>
+            <!-- ③-C 구매 액션 버튼 영역 — BUY IT NOW / CART / WISH LIST (+ SOLD OUT 상태) -->
             <div module="product_action" id="{$fixed_action_button}" class="productAction">
 				<div id="ec-product-price-info" class="displaynone" ec-data-custom="{$disp_product_custom}" ec-data-price="{$product_price}"></div>
                 <div class="{$action_display|display} action_button">
@@ -578,6 +599,7 @@
                 </div>
 				<div class="eventArea {$common_event_b|display}">{$common_event_b}</div>
             </div>
+            <!-- ③-D 하단 고정 바 — 모바일 스크롤 시 화면 하단에 고정되는 BUY IT NOW / CART 버튼 -->
             <div module="product_action" class="ec-base-button gFixed" id="orderFixArea">
                 <div class="ec-base-button gColumn {$action_display|display}">
 					<a href="#none" class="btnSubmit sizeM {$buy_display|display}" onclick="{$action_buy}"><span id="{$btn_buy_mobile_id}">BUY IT NOW</span><span class="{$btn_reserve_class|display}" id="{$btn_reserve_mobile_id}">예약주문</span><span id="{$btn_regular_delivery_id}" class="{$btn_regular_delivery|display}">REGULAR DELIVERY</span></a>
@@ -590,15 +612,21 @@
             </div>
         </div>
     </div>
+    <!-- ③-E 이벤트 배너 영역 (관리자에서 이벤트 설정 시 상품 하단에 표시) -->
     <div class="eventArea {$common_event_a|display}">
         <h3>Event</h3>
         <div class="event">{$common_event_a}</div>
     </div>
-</div>
+</div><!-- //③ 상품 상세 메인 영역 끝 -->
+
+<!-- ④ 쿠폰 다운로드 팝업 임포트 -->
 <!--@import(/coupon/coupon_productdetail.html)-->
+
+<!-- ⑤ 하단 탭 섹션 (상세정보 / 후기 / 문의 / 배송환불안내) -->
 <div class="section" module="product_additional" data-ez="contents-0lk9pj3-1">
     <!--@css(/css/module/product/additional.css)-->
 	<!--@import(/board/report_popup.html)-->
+	<!-- ⑤-A 상단 고정 탭바 — 스크롤해도 항상 상단에 붙어있는 탭 (상세정보 활성 상태) -->
 	<div id="detail" class="cboth"></div>
 	<div class="detail_tab">
 		<ul class="cboth title_detail">
@@ -607,6 +635,7 @@
 			<li><a href="#guide">배송/교환/환불 안내</a></li>
 		</ul><!-- //title_detail -->
 	</div><!-- //detail_tab -->
+	<!-- ⑤-B 모바일 탭바 (태블릿/모바일에서만 표시) -->
     <div id="tabProduct" class="tabProduct display_tablet_only">
         <ul>
             <li class="selected"><a href="#prdDetail" target="_self">상세정보</a></li>
@@ -615,8 +644,10 @@
             <li class="{$qna_display|display}"><a href="#prdQnA" name="use_qna_mobile">상품문의 <span>{$qna_count}</span></a></li>
         </ul>
     </div>
+	<!-- ⑤-C #prdDetail — 상세정보 탭 내용 (상품 설명 이미지 + 하단 연관상품 슬라이더) -->
     <div id="prdDetail" class="productDetail">
         <div>{$product_detail}</div>
+		<!-- 연관상품 슬라이더 "Recommend For You" — 관리자에서 연관상품 등록 시 표시 -->
 		<div module="product_relation">
 			<div class="relation">
 				<div class="relation_title">Recommend For You<span>회원님을 위한 추천상품</span></div>
@@ -652,6 +683,7 @@
 			</div>
 		</div><!-- //product_relation -->
 	</div><!-- //prdDetail -->
+	<!-- ⑤-D #prdReview — 후기 탭 내용 (리뷰 목록 테이블 / 게시물 없으면 플랫폼이 "게시물이 없습니다" 자동 출력) -->
 	<div id="prdReview">
 		<div id="review" class="pdt150 cboth"></div>
 		<div class="detail_tab">
@@ -715,6 +747,7 @@
 					</div>
 				</div>
 
+	<!-- ⑤-E #prdQnA — 상품문의 탭 내용 (Q&A 목록 테이블 / 게시물 없으면 플랫폼이 "게시물이 없습니다" 자동 출력) -->
 	<div id="prdQnA">
 		<div id="qna" class="pdt150 cboth"></div>
 		<div class="detail_tab">
@@ -786,6 +819,7 @@
 
 		</div><!-- //상품문의 -->
 	</div><!-- //prdQnA -->
+	<!-- ⑤-F #prdInfo — 배송/교환/환불 안내 탭 내용 (PAYMENT / DELIVERY / EXCHANGE / SERVICE INFO 아코디언) -->
 	<div id="prdInfo">
 		<div id="guide" class="pdt150 cboth"></div>
 		<div class="detail_tab">
