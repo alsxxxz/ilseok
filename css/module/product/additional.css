@@ -1,0 +1,21 @@
+/* 탭 네비게이션 - 3개 균등 배분 */
+.detail_tab .title_detail {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.detail_tab .title_detail > li {
+    display: table-cell;
+    width: 33.333%;
+    text-align: center;
+}
+
+.detail_tab .title_detail > li a {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
