@@ -746,6 +746,9 @@
 						</table>
 					</div>
 				</div>
+			</div><!-- [FIX] .contents 닫기 (누락된 닫는 태그 추가) -->
+		</div><!-- [FIX] review_display 닫기 (누락된 닫는 태그 추가) -->
+	</div><!-- [FIX] #prdReview 닫기 — 이 태그가 없어 #prdQnA가 #prdReview 안에 잘못 중첩되어 모바일 탭 레이아웃이 깨졌음 -->
 
 	<!-- ⑤-E #prdQnA — 상품문의 탭 내용 (Q&A 목록 테이블 / 게시물 없으면 플랫폼이 "게시물이 없습니다" 자동 출력) -->
 	<div id="prdQnA">
@@ -816,8 +819,8 @@
 						</table>
 					</div>
 				</div>
-
-		</div><!-- //상품문의 -->
+			</div><!-- [FIX] .contents 닫기 (누락된 닫는 태그 추가) -->
+		</div><!-- //상품문의 qna_display -->
 	</div><!-- //prdQnA -->
 	<!-- ⑤-F #prdInfo — 배송/교환/환불 안내 탭 내용 (PAYMENT / DELIVERY / EXCHANGE / SERVICE INFO 아코디언) -->
 	<div id="prdInfo">
