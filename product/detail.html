@@ -684,17 +684,17 @@
 		</div><!-- //product_relation -->
 	</div><!-- //prdDetail -->
 	<!-- ⑤-D #prdReview — 후기 탭 내용 (리뷰 목록 테이블 / 게시물 없으면 플랫폼이 "게시물이 없습니다" 자동 출력) -->
-	<div id="prdReview">
+	<!-- [FIX] review_display 조건을 #prdReview 전체에 적용 — 기존에는 내부 콘텐츠만 숨겨져 pdt150 공백(150px)과 detail_tab이 항상 렌더링되어 모바일에서 불필요한 빈 공간과 탭바가 나타났음 -->
+	<div id="prdReview" class="{$review_display|display}">
 		<div id="review" class="pdt150 cboth"></div>
 		<div class="detail_tab">
 			<ul class="cboth title_detail">
 				<li><a href="#detail">상세정보</a></li>
-
 				<li><a href="#qna">상품문의 <span>{$qna_count}</span></a></li>
 				<li><a href="#guide">배송/교환/환불 안내</a></li>
 			</ul><!-- //title_detail -->
 		</div><!-- //detail_tab -->
-	<div class="{$review_display|display}">
+	<div>
 			<div class="contents">
 				<div module="product_review">
 					<!--@js(/js/module/product/review.js)-->
